@@ -23,6 +23,7 @@
         --faint: #a79c93;
         --line: #ede2d8;
         --black: #1b1815;
+        --accent: #5c7a63;
         --serif: "Lora", serif;
         --sans: "Inter", sans-serif;
       }
@@ -127,6 +128,27 @@
         text-align: center;
         padding: 88px 40px 64px;
       }
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ecf1ec;
+        color: var(--accent);
+        border: 1px solid #d7e3d9;
+        padding: 7px 16px;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        margin-bottom: 22px;
+      }
+      .status-pill .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: inline-block;
+      }
       .hero-kicker {
         font-size: 0.82rem;
         letter-spacing: 0.08em;
@@ -150,9 +172,15 @@
         margin-right: auto;
         font-size: 1.02rem;
       }
+      .hero-ctas {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
       .btn-black {
         display: inline-block;
-        margin-top: 32px;
         background: var(--black);
         color: #fff;
         padding: 15px 34px;
@@ -166,6 +194,23 @@
       .btn-black:hover {
         transform: translateY(-2px);
         background: #000;
+      }
+      .btn-outline {
+        display: inline-block;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        padding: 14px 34px;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.92rem;
+        transition:
+          transform 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .btn-outline:hover {
+        transform: translateY(-2px);
+        border-color: var(--faint);
       }
 
       /* BIO */
@@ -229,6 +274,13 @@
         padding: 56px 40px;
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
+      }
+      .philosophy .label {
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--faint);
+        margin-bottom: 18px;
       }
       .philosophy blockquote {
         font-family: var(--serif);
@@ -414,6 +466,16 @@
         transform: translateY(-2px);
         background: #000;
       }
+      .contact-fallback {
+        margin-top: 18px;
+        font-size: 0.85rem;
+        color: var(--soft);
+      }
+      .contact-fallback a {
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
 
       footer {
         padding: 26px 40px;
@@ -502,6 +564,9 @@
       </nav>
 
       <section class="hero">
+        <div class="status-pill">
+          <span class="dot"></span> Open to new front-end opportunities
+        </div>
         <div class="hero-kicker">Front-End Software Engineer</div>
         <h1 class="hero-title">
           Clean, Accessible Front-End Development for Growing Teams
@@ -511,7 +576,16 @@
           JavaScript, React, and Tailwind, with accessibility built in from the
           start, not bolted on at the end.
         </p>
-        <a class="btn-black" href="#contact">Let's Talk</a>
+        <div class="hero-ctas">
+          <a class="btn-black" href="#contact">Let's Talk</a>
+          <a
+            class="btn-outline"
+            href="assets/riaz-masud-resume.pdf"
+            target="_blank"
+            rel="noopener"
+            >Download Résumé</a
+          >
+        </div>
       </section>
 
       <section id="about" class="bio wrap">
@@ -519,10 +593,10 @@
           <div class="bio-text">
             <h2>Hi, I'm Riaz!</h2>
             <p>
-              I'm a front-end engineer currently at Augeo Affinity Marketing in
-              Boca Raton, FL, where I build and maintain customer-facing
-              enterprise applications in JavaScript, HTML5, CSS3, SCSS, Twig,
-              and Tailwind CSS.
+              I'm a front-end engineer with six years of experience building
+              customer-facing enterprise web applications. Most recently, I was
+              at Augeo Affinity Marketing in Boca Raton, FL, working in
+              JavaScript, HTML5, React, CSS3, SCSS, Twig, and Tailwind CSS.
             </p>
             <p>
               A good part of my work is accessibility — auditing sites for
@@ -530,6 +604,11 @@
               closely with product, design, QA, and backend across the full
               Agile cycle, and use tools like Cursor and Claude to move faster
               without cutting corners.
+            </p>
+            <p>
+              I'm currently exploring my next front-end role — happy to talk
+              about full-time or contract opportunities, remote or in the South
+              Florida area.
             </p>
 
             <div class="services-title">What I Do:</div>
@@ -566,11 +645,12 @@
       </section>
 
       <section class="philosophy">
+        <div class="label">Riaz's approach</div>
         <blockquote>
           "Good accessibility work is invisible when it's done right — you only
           notice it when it's missing."
         </blockquote>
-        <cite>— Riaz, on how he approaches front-end work</cite>
+        <cite>— on how he approaches front-end work</cite>
       </section>
 
       <section id="projects" class="projects wrap">
@@ -742,6 +822,11 @@
             </div>
             <button class="submit" type="submit">Send Message</button>
           </form>
+
+          <p class="contact-fallback">
+            Prefer email directly? Reach me at
+            <a href="mailto:masud.riaz@gmail.com">masud.riaz@gmail.com</a>.
+          </p>
         </div>
       </section>
 
