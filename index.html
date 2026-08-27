@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riaz Masud — Front-End Software Engineer</title>
+<meta name="description" content="Portfolio of Riaz Masud, front-end software engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#F3E6DD;
+    --card:#FFFFFF;
+    --ink:#221E1C;
+    --soft:#6E655F;
+    --faint:#A79C93;
+    --line:#EDE2D8;
+    --black:#1B1815;
+    --serif:'Lora', serif;
+    --sans:'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none!important;} }
+  body{
+    background:var(--blush);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding:28px 16px;
+  }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+  :focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+  .site{
+    max-width:1080px;
+    margin:0 auto;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 40px; }
+
+  /* NAV */
+  nav.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:26px 40px;
+    max-width:1080px;
+    margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand img{
+    width:38px; height:38px; border-radius:50%; object-fit:cover; object-position:center 30%;
+  }
+  .brand span{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.02rem;
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--soft);
+  }
+  .nav-links a{ transition:color .15s ease; }
+  .nav-links a:hover{ color:var(--ink); }
+
+  /* HERO */
+  .hero{
+    text-align:center;
+    padding:88px 40px 64px;
+  }
+  .hero-kicker{
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--soft);
+    margin-bottom:20px;
+  }
+  h1.hero-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2rem,4.6vw,2.85rem);
+    line-height:1.25;
+    max-width:20ch;
+    margin:0 auto;
+  }
+  .hero-sub{
+    margin-top:20px;
+    color:var(--soft);
+    max-width:52ch;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:1.02rem;
+  }
+  .btn-black{
+    display:inline-block;
+    margin-top:32px;
+    background:var(--black);
+    color:#fff;
+    padding:15px 34px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.92rem;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn-black:hover{ transform:translateY(-2px); background:#000; }
+
+  /* BIO */
+  .bio{
+    padding:70px 0 80px;
+    border-top:1px solid var(--line);
+  }
+  .bio-grid{
+    display:grid;
+    grid-template-columns:1fr 0.85fr;
+    gap:56px;
+    align-items:start;
+  }
+  .bio-text h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.7rem;
+    margin-bottom:18px;
+  }
+  .bio-text p{ color:var(--soft); margin-bottom:14px; }
+  .services-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.15rem;
+    margin-top:28px;
+    margin-bottom:16px;
+  }
+  .service{ margin-bottom:18px; }
+  .service:last-child{ margin-bottom:0; }
+  .service h4{ font-size:1rem; font-weight:700; margin-bottom:4px; }
+  .service p{ color:var(--soft); font-size:0.94rem; }
+  .bio-photo{
+    border-radius:8px;
+    overflow:hidden;
+    aspect-ratio:4/5;
+  }
+  .bio-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+
+  /* PHILOSOPHY (honest replacement for testimonial) */
+  .philosophy{
+    text-align:center;
+    padding:56px 40px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .philosophy blockquote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.2rem,2.6vw,1.5rem);
+    max-width:44ch;
+    margin:0 auto;
+    line-height:1.5;
+  }
+  .philosophy cite{
+    display:block;
+    margin-top:18px;
+    font-family:var(--sans);
+    font-style:normal;
+    font-size:0.82rem;
+    color:var(--faint);
+  }
+
+  /* PROJECTS */
+  .projects{ padding:70px 0; }
+  .projects h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.5rem;
+    text-align:center;
+    margin-bottom:12px;
+  }
+  .projects .sub{
+    text-align:center;
+    color:var(--soft);
+    max-width:48ch;
+    margin:0 auto 44px;
+    font-size:0.95rem;
+  }
+  .proj-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px 20px;
+  }
+  .proj-thumb{
+    border-radius:6px;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    filter:grayscale(1);
+    transition:filter .2s ease, transform .2s ease;
+  }
+  .proj-card:hover .proj-thumb{ filter:grayscale(0); transform:translateY(-2px); }
+  .proj-thumb span{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.6rem;
+    color:#fff;
+  }
+  .g1{background:linear-gradient(150deg,#8C8378,#3E3833);}
+  .g2{background:linear-gradient(150deg,#9C8B76,#4A3F2E);}
+  .g3{background:linear-gradient(150deg,#7C8A8C,#333E40);}
+  .g4{background:linear-gradient(150deg,#8E7A8A,#392C36);}
+  .g5{background:linear-gradient(150deg,#7E8B76,#333A2E);}
+  .g6{background:linear-gradient(150deg,#8C7A6E,#3A2F27);}
+  .g7{background:linear-gradient(150deg,#78828C,#2E343C);}
+  .proj-cap{ margin-top:12px; }
+  .proj-cap .name{ font-weight:700; font-size:0.9rem; }
+  .proj-cap .desc{ color:var(--soft); font-size:0.82rem; margin-top:3px; }
+  .proj-cap a{
+    display:inline-block; margin-top:6px; font-size:0.78rem; font-weight:600;
+    text-decoration:underline; text-underline-offset:2px; color:var(--ink);
+  }
+
+  /* CONTACT */
+  .contact{
+    padding:70px 40px 80px;
+    border-top:1px solid var(--line);
+  }
+  .contact-inner{ max-width:640px; margin:0 auto; }
+  .contact h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.6rem;
+    margin-bottom:14px;
+  }
+  .contact p.lead{ color:var(--soft); margin-bottom:32px; font-size:0.98rem; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  label{ display:block; font-size:0.8rem; font-weight:600; margin-bottom:6px; }
+  input, textarea{
+    width:100%;
+    border:1px solid var(--line);
+    background:#FBF7F3;
+    border-radius:6px;
+    padding:12px 14px;
+    font-family:var(--sans);
+    font-size:0.92rem;
+    color:var(--ink);
+  }
+  input:focus, textarea:focus{ outline:2px solid var(--ink); outline-offset:1px; background:#fff; }
+  textarea{ min-height:120px; resize:vertical; margin-bottom:8px; }
+  .form-note{ font-size:0.78rem; color:var(--faint); margin-bottom:22px; }
+  button.submit{
+    background:var(--black);
+    color:#fff;
+    border:none;
+    padding:14px 30px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.9rem;
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease;
+  }
+  button.submit:hover{ transform:translateY(-2px); background:#000; }
+
+  footer{
+    padding:26px 40px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:0.82rem;
+    color:var(--faint);
+  }
+  .footer-links{ display:flex; gap:18px; }
+  .footer-links a:hover{ color:var(--ink); }
+
+  @media (max-width:800px){
+    .wrap{ padding:0 24px; }
+    .bio-grid{ grid-template-columns:1fr; }
+    .bio-photo{ order:-1; aspect-ratio:16/10; }
+    .proj-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:600px){
+    body{ padding:14px 8px; }
+    nav.top{ padding:20px 20px; }
+    .nav-links{ display:none; }
+    .hero{ padding:64px 20px 48px; }
+    .bio, .contact{ padding-left:0; padding-right:0; }
+    .wrap{ padding:0 20px; }
+    .contact{ padding:56px 20px 64px; }
+    .form-row{ grid-template-columns:1fr; }
+    .proj-grid{ grid-template-columns:repeat(2,1fr); }
+    footer{ flex-direction:column; align-items:flex-start; padding:22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="site">
+
+  <nav class="top">
+    <div class="brand">
+      <img src="assets/riaz-photo.jpg" alt="Riaz Masud">
+      <span>Riaz Masud</span>
+    </div>
+    <div class="nav-links">
+      <a href="#projects">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-kicker">Front-End Software Engineer</div>
+    <h1 class="hero-title">Clean, Accessible Front-End Development for Growing Teams</h1>
+    <p class="hero-sub">Six years building customer-facing enterprise web applications — JavaScript, React, and Tailwind, with accessibility built in from the start, not bolted on at the end.</p>
+    <a class="btn-black" href="#contact">Let's Talk</a>
+  </section>
+
+  <section id="about" class="bio wrap">
+    <div class="bio-grid">
+      <div class="bio-text">
+        <h2>Hi, I'm Riaz!</h2>
+        <p>I'm a front-end engineer currently at Augeo Affinity Marketing in Boca Raton, FL, where I build and maintain customer-facing enterprise applications in JavaScript, HTML5, CSS3, SCSS, Twig, and Tailwind CSS.</p>
+        <p>A good part of my work is accessibility — auditing sites for ADA/WCAG compliance and actually fixing what's broken. I work closely with product, design, QA, and backend across the full Agile cycle, and use tools like Cursor and Claude to move faster without cutting corners.</p>
+
+        <div class="services-title">What I Do:</div>
+
+        <div class="service">
+          <h4>Front-End Development</h4>
+          <p>Building responsive, maintainable interfaces in JavaScript, HTML5, CSS3, and SCSS — from component libraries to full page builds.</p>
+        </div>
+        <div class="service">
+          <h4>Accessibility Engineering</h4>
+          <p>Auditing existing sites for ADA/WCAG issues and remediating them — keyboard navigation, contrast, screen-reader support, the real fixes, not just a checkbox.</p>
+        </div>
+        <div class="service">
+          <h4>React &amp; Tailwind Builds</h4>
+          <p>Component-driven front ends built with React and styled with Tailwind CSS, for projects that need to move fast and stay clean.</p>
+        </div>
+      </div>
+      <div class="bio-photo">
+        <img src="assets/riaz-photo.jpg" alt="Riaz Masud">
+      </div>
+    </div>
+  </section>
+
+  <section class="philosophy">
+    <blockquote>"Good accessibility work is invisible when it's done right — you only notice it when it's missing."</blockquote>
+    <cite>— Riaz, on how he approaches front-end work</cite>
+  </section>
+
+  <section id="projects" class="projects wrap">
+    <h2>Selected Projects</h2>
+    <p class="sub">A few sites I've built and hosted on GitHub Pages — static builds, an accessibility-first rebuild, and React + Tailwind apps.</p>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-thumb g1"><span>BA</span></div>
+        <div class="proj-cap">
+          <div class="name">Business Agency</div>
+          <div class="desc">Static site · HTML/CSS</div>
+          <a href="https://riazmasud.github.io/web-projects/business-agency/" target="_blank" rel="noopener">Visit site</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb g2"><span>CD</span></div>
+        <div class="proj-cap">
+          <div class="name">Creative Design</div>
+          <div class="desc">Static site · HTML/CSS</div>
+          <a href="https://riazmasud.github.io/web-projects/creative-design/" target="_blank" rel="noopener">Visit site</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb g3"><span>AE</span></div>
+        <div class="proj-cap">
+          <div class="name">Apple eCommerce</div>
+          <div class="desc">Static site · HTML/CSS</div>
+          <a href="https://riazmasud.github.io/web-projects/apple-eCommerce/" target="_blank" rel="noopener">Visit site</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb g4"><span>FD</span></div>
+        <div class="proj-cap">
+          <div class="name">Foods</div>
+          <div class="desc">ADA-compliant static site</div>
+          <a href="https://riazmasud.github.io/web-projects/foods/" target="_blank" rel="noopener">Visit site</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb g5"><span>TR</span></div>
+        <div class="proj-cap">
+          <div class="name">Tailwind + React</div>
+          <div class="desc">React · Tailwind CSS</div>
+          <a href="https://riazmasud.github.io/web-projects/tailwind-react/" target="_blank" rel="noopener">Visit site</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb g6"><span>TD</span></div>
+        <div class="proj-cap">
+          <div class="name">To-Do App</div>
+          <div class="desc">React · Tailwind CSS</div>
+          <a href="https://riazmasud.github.io/web-projects/to-do-app/" target="_blank" rel="noopener">Visit site</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb g7"><span>PB</span></div>
+        <div class="proj-cap">
+          <div class="name">PBTSC Sports Academy</div>
+          <div class="desc">React · Dashboard UI</div>
+          <a href="https://riazmasud.github.io/pbtsc-app/" target="_blank" rel="noopener">Visit site</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-inner">
+      <h2>Let's Talk!</h2>
+      <p class="lead">I'm currently exploring new front-end roles. Send a note below and it'll open directly in your email app — nothing is stored or sent through this site.</p>
+
+      <form action="mailto:masud.riaz@gmail.com" method="POST" enctype="text/plain">
+        <div class="form-row">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="Name" placeholder="Jane Smith" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" placeholder="jane@company.com" required>
+          </div>
+        </div>
+        <label for="message">Message</label>
+        <textarea id="message" name="Message" placeholder="What are you working on?" required></textarea>
+        <div class="form-note">This opens your default email app with your message pre-filled.</div>
+        <button class="submit" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <span id="year"></span> Riaz Masud</span>
+    <div class="footer-links">
+      <a href="mailto:masud.riaz@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/riaz-masud-2a765819" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/riazmasud" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
